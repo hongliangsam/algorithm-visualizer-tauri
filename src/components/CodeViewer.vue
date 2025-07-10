@@ -1720,6 +1720,7 @@ onMounted(() => {
   padding: 16px;
   background-color: #282a36;
   position: relative;
+  height: 100%; /* 确保容器占满可用高度 */
 }
 
 .code-content {

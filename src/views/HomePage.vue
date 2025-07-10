@@ -42,7 +42,7 @@ const handleFileSelect = (file) => {
 .home-page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   background-color: #1a1b26;
   color: #a9b1d6;
   overflow: hidden;
@@ -57,6 +57,7 @@ const handleFileSelect = (file) => {
   border-bottom: 1px solid #2d2d3f;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   z-index: 10;
+  flex-shrink: 0; /* 确保header不会被压缩 */
 }
 
 .logo {
@@ -101,6 +102,7 @@ const handleFileSelect = (file) => {
   display: flex;
   flex: 1;
   overflow: hidden;
+  height: calc(100% - 70px); /* 减去header的高度 */
 }
 
 .sidebar {
@@ -110,6 +112,8 @@ const handleFileSelect = (file) => {
   background-color: #1e1e2e;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar::after {
@@ -126,6 +130,7 @@ const handleFileSelect = (file) => {
 .content {
   flex: 1;
   overflow: hidden;
+  position: relative;
 }
 
 @keyframes pulse {
