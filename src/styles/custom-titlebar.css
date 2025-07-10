@@ -1,0 +1,143 @@
+/* 自定义标题栏样式 */
+.custom-titlebar {
+  height: 30px;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 0 10px;
+  background: linear-gradient(90deg, #1a1b2a, #232338);
+  color: #fff;
+  border-bottom: 1px solid #333;
+  cursor: default; /* 默认光标样式 */
+  -webkit-app-region: drag; /* 整个标题栏可拖拽 */
+}
+
+/* 浅色主题 */
+.custom-titlebar.light-theme {
+  background: linear-gradient(90deg, #f0f2f5, #e6e8eb);
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 深色主题 */
+.custom-titlebar.dark-theme {
+  background: linear-gradient(90deg, #1a1b2a, #232338);
+  color: #fff;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 应用标题区域 */
+.titlebar-app-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-app-region: drag; /* 标题文本区域可拖拽 */
+}
+
+/* 控制按钮区域 */
+.titlebar-controls {
+  display: flex;
+  -webkit-app-region: no-drag; /* 控制按钮区域不可拖拽 */
+}
+
+/* 控制按钮样式 */
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #ffffff; /* 默认白色 */
+  transition: all 0.2s ease;
+  -webkit-app-region: no-drag; /* 控制按钮不可拖拽 */
+}
+
+/* 浅色主题按钮 */
+.light-theme .titlebar-button {
+  color: #333333;
+}
+
+.titlebar-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.light-theme .titlebar-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+/* 增强SVG图标可见性 */
+.titlebar-button svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5;
+  fill: none;
+  stroke: currentColor;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+}
+
+.light-theme .titlebar-button svg {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
+}
+
+/* 关闭按钮特殊样式 */
+.titlebar-button.close:hover {
+  background-color: #e81123;
+  color: white;
+}
+
+.light-theme .titlebar-button.close:hover {
+  background-color: #e81123;
+  color: white;
+}
+
+/* 为按钮添加视觉反馈 */
+.titlebar-button {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 添加按钮边框以增强可见性 */
+.titlebar-button::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.titlebar-button:hover::before {
+  opacity: 1;
+}
+
+/* 确保图标颜色与背景形成对比 */
+.titlebar-button svg {
+  color: #ffffff;
+  opacity: 0.9; /* 稍微降低不透明度以形成良好对比 */
+}
+
+.light-theme .titlebar-button svg {
+  color: #333333;
+  opacity: 0.9;
+}

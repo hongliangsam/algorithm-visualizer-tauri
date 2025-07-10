@@ -8,12 +8,13 @@ export default defineConfig(({ command }) => {
     plugins: [vue()],
     resolve: {
       alias: {
+        '@': path.resolve(__dirname, './src'),
         '@tauri-apps/api': path.resolve(__dirname, 'node_modules/@tauri-apps/api')
       }
     },
     // 开发服务器设置，端口需要与tauri.conf.json中的devUrl一致
     server: {
-      port: 3000,
+      port: 9001,
       strictPort: true,
       host: true
     },
