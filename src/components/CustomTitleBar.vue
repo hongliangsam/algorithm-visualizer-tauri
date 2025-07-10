@@ -30,12 +30,34 @@
 
 <script setup>
 import { onMounted, onBeforeUnmount } from 'vue';
-import { isTauri, minimizeWindow, maximizeWindow, closeWindow } from '../utils/tauri';
+import { minimizeWindow, maximizeWindow, closeWindow } from '../utils/tauri';
 
 // 窗口对象和API状态
 let appWindow = null;
 let windowAPI = null;
 let tauriAvailable = false;
+
+// 拖拽事件处理函数
+const dragHandler = async (event) => {
+  // 如果不是在按钮区域点击，就可以拖拽
+  if (!event.target.closest('.titlebar-button')) {
+    console.log('开始拖拽窗口');
+
+    try {
+      if (appWindow && appWindow.startDragging) {
+        await appWindow.startDragging();
+      } else if (windowAPI && windowAPI.appWindow && windowAPI.appWindow.startDragging) {
+        await windowAPI.appWindow.startDragging();
+      } else if (window.__TAURI__ && window.__TAURI__.window && window.__TAURI__.window.appWindow) {
+        await window.__TAURI__.window.appWindow.startDragging();
+      } else {
+        console.warn('无法找到startDragging方法');
+      }
+    } catch (error) {
+      console.error('拖拽窗口失败:', error);
+    }
+  }
+};
 
 // 初始化Tauri窗口API
 async function initTauriWindow() {
@@ -216,45 +238,23 @@ async function handleClose() {
   }
 }
 
-// 拖动窗口
-function setupDragArea() {
-  const el = document.querySelector('.titlebar');
-  if (!el) return;
-
-  const dragHandler = async (event) => {
-    // 如果不是在按钮区域点击，就可以拖拽
-    if (!event.target.closest('.titlebar-button')) {
-      console.log('开始拖拽窗口');
-
-      try {
-        if (appWindow && appWindow.startDragging) {
-          await appWindow.startDragging();
-        } else if (windowAPI && windowAPI.appWindow && windowAPI.appWindow.startDragging) {
-          await windowAPI.appWindow.startDragging();
-        } else if (window.__TAURI__ && window.__TAURI__.window && window.__TAURI__.window.appWindow) {
-          await window.__TAURI__.window.appWindow.startDragging();
-        } else {
-          console.warn('无法找到startDragging方法');
-        }
-      } catch (error) {
-        console.error('拖拽窗口失败:', error);
-      }
-    }
-  };
-
-  // 添加事件监听
-  el.addEventListener('mousedown', dragHandler);
-
-  // 组件卸载时移除事件监听
-  onBeforeUnmount(() => {
-    el.removeEventListener('mousedown', dragHandler);
-  });
-}
-
 // 组件挂载后初始化
 onMounted(async () => {
   await initTauriWindow();
-  setupDragArea();
+
+  // 设置拖拽区域
+  const el = document.querySelector('.titlebar');
+  if (el) {
+    el.addEventListener('mousedown', dragHandler);
+  }
+});
+
+// 在组件卸载前移除事件监听
+onBeforeUnmount(() => {
+  const el = document.querySelector('.titlebar');
+  if (el) {
+    el.removeEventListener('mousedown', dragHandler);
+  }
 });
 </script>
 
