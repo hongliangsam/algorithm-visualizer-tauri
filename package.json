@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.6.2",
+    "@tauri-apps/plugin-http": "^2.5.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "vite": "^6.3.5"
   }

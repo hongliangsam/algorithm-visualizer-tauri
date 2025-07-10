@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
+import TauriTest from '../components/TauriTest.vue'
 
 const routes = [
   {
@@ -11,6 +12,11 @@ const routes = [
     path: '/code/:filePath(.*)',
     name: 'code',
     component: HomePage
+  },
+  {
+    path: '/tauri-test',
+    name: 'tauri-test',
+    component: TauriTest
   }
 ]
 
