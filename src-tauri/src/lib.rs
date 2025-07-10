@@ -1,4 +1,6 @@
 // Tauri命令
+use tauri::Manager;
+
 #[tauri::command]
 async fn greet(name: String) -> Result<String, String> {
     Ok(format!("你好，{}！欢迎使用算法可视化器！", name))
@@ -8,13 +10,17 @@ async fn greet(name: String) -> Result<String, String> {
 pub fn run() {
   tauri::Builder::default()
     .setup(|app| {
-      if cfg!(debug_assertions) {
-        app.handle().plugin(
-          tauri_plugin_log::Builder::default()
-            .level(log::LevelFilter::Info)
-            .build(),
-        )?;
-      }
+      // 在任何模式下都启用日志插件
+      app.handle().plugin(
+        tauri_plugin_log::Builder::default()
+          .level(log::LevelFilter::Info)
+          .build(),
+      )?;
+
+      // 获取主窗口并自动打开开发者工具
+      let window = app.get_webview_window("main").unwrap();
+      window.open_devtools();
+
       Ok(())
     })
     .plugin(tauri_plugin_http::init())
