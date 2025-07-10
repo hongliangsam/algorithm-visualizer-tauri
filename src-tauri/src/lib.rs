@@ -17,9 +17,13 @@ pub fn run() {
           .build(),
       )?;
 
-      // 获取主窗口并自动打开开发者工具
-      let window = app.get_webview_window("main").unwrap();
-      window.open_devtools();
+      // 在开发模式下自动打开开发者工具
+      #[cfg(debug_assertions)]
+      {
+          let window = app.get_webview_window("main").unwrap();
+          window.open_devtools();
+          println!("开发者工具已打开");
+      }
 
       Ok(())
     })

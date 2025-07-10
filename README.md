@@ -4,22 +4,36 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Framework-Vue%203-brightgreen">
-  <img src="https://img.shields.io/badge/Build-Vite-blue">
+  <img src="https://img.shields.io/badge/Build-Tauri-blue">
+  <img src="https://img.shields.io/badge/Platform-Win%2FmacOS%2FLinux-purple">
   <img src="https://img.shields.io/badge/Language-JavaScript-yellow">
+  <img src="https://img.shields.io/badge/Language-Rust-black">
   <img src="https://img.shields.io/badge/Algorithms-10+%20categories-orange">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg">
 </p>
 
 # 算法可视化器
 
-<p align="center">一个用于展示和解释各种经典算法实现和运行过程的可视化工具。本项目基于Vue 3和Vite构建，帮助用户直观理解各类算法的工作原理和执行过程。</p>
+<p align="center">一个跨平台的算法可视化桌面应用，用于展示和解释各种经典算法实现和运行过程。本项目基于Vue 3和Tauri构建，支持Windows、macOS和Linux系统，帮助用户直观理解各类算法的工作原理和执行过程。</p>
 
 > [!NOTE]
 >
 > 若本项目对您有所帮助，请在页面右上角点个 **Star** :star: 支持一下，谢谢！
 
+## 项目特性
+
+- ✨ **交互式算法可视化界面**：直观展示算法运行过程
+- 🔍 **代码和可视化同步展示**：同时查看代码实现与运行效果
+- 📚 **支持多种经典算法**：覆盖10+种常见算法类别
+- 💻 **跨平台支持**：可在Windows、macOS和Linux系统上运行
+- 🚀 **离线使用**：安装后无需网络连接即可使用全部功能
+- 📱 **响应式设计**：适应不同设备屏幕大小
+- 🎨 **自定义标题栏**：美观的无边框窗口设计，支持明暗主题自动切换
+- 🔒 **本地运行**：所有代码在本地执行，保护您的隐私
+
 ## 项目灵感
 
-本项目的灵感来源于为 [Hello 算法](https://github.com/krahets/hello-algo) 开源书籍添加一个方便运行其中JavaScript算法代码的可视化界面。Hello 算法是一本动画图解、一键运行的数据结构与算法教程，支持多种编程语言。本可视化器旨在提供更直观的方式来理解和运行这些算法实现。
+本项目的灵感来源于为 [Hello 算法](https://github.com/krahets/hello-algo) 开源书籍添加一个方便运行其中JavaScript算法代码的可视化工具。Hello 算法是一本动画图解、一键运行的数据结构与算法教程，支持多种编程语言。本可视化器旨在提供更直观的方式来理解和运行这些算法实现。
 
 <p align="center">
   <a href="https://github.com/krahets/hello-algo">
@@ -31,18 +45,20 @@
   <a href="https://github.com/krahets/hello-algo">《Hello 算法》</a> —— 动画图解、一键运行的数据结构与算法教程
 </p>
 
-## 项目特性
+## 下载安装
 
-- ✨ **交互式算法可视化界面**：直观展示算法运行过程
-- 🔍 **代码和可视化同步展示**：同时查看代码实现与运行效果
-- 📚 **支持多种经典算法**：覆盖10+种常见算法类别
-- 🚀 **易于理解的算法执行过程**：通过可视化帮助理解算法原理
-- 📱 **响应式设计**：适应不同设备屏幕大小
-- 🎨 **自定义标题栏**：美观的无边框窗口设计，支持明暗主题自动切换
+您可以通过以下方式获取应用：
+
+- **Windows**: 下载 `.exe` 安装包或便携版
+- **macOS**: 下载 `.dmg` 安装包或通过 Homebrew 安装
+- **Linux**: 下载 `.AppImage` 文件、`.deb` 包或 `.rpm` 包
+
+> [!TIP]
+> 所有安装包均可在本项目的 [Releases](https://github.com/your-username/algorithm-visualizer-tauri/releases) 页面找到。
 
 ## 在线演示
 
-现在您可以直接访问我们的在线演示地址，无需本地部署即可体验：
+除了桌面应用外，您也可以通过以下链接体验在线版本：
 
 🔗 **[算法可视化器在线演示](https://hongliangsam.github.io/algorithm-visualizer/)**
 
@@ -71,7 +87,7 @@
   <img src="src/assets/checkAndJump.png" alt="代码查看器" width="800">
 </p>
 
-## 使用方法
+## 开发指南
 
 ```bash
 # 安装依赖
@@ -84,14 +100,14 @@ npm run dev
 # 或
 pnpm dev
 
-# 构建生产版本
-npm run build
+# 构建桌面应用
+npm run tauri build
 # 或
-pnpm build
+pnpm tauri build
 ```
 
 > [!TIP]
-> 初次使用时，建议先浏览一下项目界面，熟悉各项功能和操作方法。
+> 开发前需确保已安装Rust和Tauri的相关依赖，详情请参考[Tauri官方文档](https://tauri.app/v1/guides/getting-started/prerequisites)。
 
 ## 项目结构
 
@@ -102,6 +118,7 @@ pnpm build
 - `src/assets`: 静态资源
 - `src/utils`: 工具函数
 - `src/styles`: 样式文件，包含自定义标题栏样式
+- `src-tauri`: Tauri相关配置和Rust代码，用于构建跨平台桌面应用
 
 ## 学习指南
 
