@@ -2,7 +2,7 @@
   <div class="titlebar">
     <!-- 标题部分 -->
     <div class="titlebar-title">
-      算法可视化器
+      <!-- 算法可视化器 -->
     </div>
 
     <!-- 窗口控制按钮 -->
@@ -262,7 +262,7 @@ onBeforeUnmount(() => {
 /* 现代化标题栏样式 */
 .titlebar {
   height: 32px;
-  background: #1f2937;
+  background: linear-gradient(90deg, #1a1b2a, #232338);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -273,7 +273,7 @@ onBeforeUnmount(() => {
   right: 0;
   user-select: none;
   z-index: 9999;
-  border-bottom: 1px solid #374151;
+  /* border-bottom: 1px solid #374151; */
   -webkit-app-region: drag; /* 使用CSS控制拖拽区域作为备用 */
 }
 

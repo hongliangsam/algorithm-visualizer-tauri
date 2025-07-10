@@ -52,7 +52,7 @@ const handleFileSelect = (file) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
+  padding: 0 24px 16px 24px;
   background: linear-gradient(90deg, #1a1b2a, #232338);
   border-bottom: 1px solid #2d2d3f;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
