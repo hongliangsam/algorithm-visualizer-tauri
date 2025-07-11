@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <UI Id="WixUI_Custom">
+      <!-- 引用所需的标准对话框 -->
+      <UIRef Id="WixUI_InstallDir" />
+      <!-- 引用我们的自定义对话框 -->
+      <DialogRef Id="ShortcutDlg" />
+
+      <!-- 修改对话框序列，在InstallDirDlg之后添加ShortcutDlg -->
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="ShortcutDlg" Order="4">WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID="1"</Publish>
+
+      <!-- 从ShortcutDlg到VerifyReadyDlg的导航 -->
+      <Publish Dialog="ShortcutDlg" Control="Back" Event="NewDialog" Value="InstallDirDlg">1</Publish>
+      <Publish Dialog="ShortcutDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+
+      <!-- 从VerifyReadyDlg返回ShortcutDlg的导航 -->
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ShortcutDlg" Order="1">NOT Installed</Publish>
+    </UI>
+
+    <!-- 设置默认勾选桌面快捷方式 -->
+    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" />
+  </Fragment>
+</Wix>

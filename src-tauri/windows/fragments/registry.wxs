@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <!-- 这些注册表项将安装到目标用户的计算机上 -->
+    <DirectoryRef Id="TARGETDIR">
+      <!-- 组织安装的注册表项 -->
+      <!-- 注意这里我们提供的唯一ID -->
+      <Component Id="AlgorithmVisualizerRegistryEntries" Guid="*">
+        <!-- 注册表项将位于 HKEY_CURRENT_USER\Software\algorithm\visualizer -->
+        <!-- Tauri 使用标识符的第二部分作为"公司"名称
+            (例如 `algorithm` in `com.algorithm.visualizer`)  -->
+        <RegistryKey
+          Root="HKCU"
+          Key="Software\algorithm\visualizer"
+          Action="createAndRemoveOnUninstall"
+        >
+          <!-- 要保存在注册表中的值 -->
+          <RegistryValue
+            Type="integer"
+            Name="InstalledVersion"
+            Value="1"
+            KeyPath="yes"
+          />
+          <RegistryValue
+            Type="string"
+            Name="InstallPath"
+            Value="[INSTALLDIR]"
+          />
+          <RegistryValue
+            Type="string"
+            Name="LastRunDate"
+            Value="[DATE]"
+          />
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

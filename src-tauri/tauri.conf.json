@@ -50,7 +50,27 @@
       "icons/Square284x284Logo.png",
       "icons/Square310x310Logo.png",
       "icons/StoreLogo.png"
-    ]
+    ],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "embedBootstrapper"
+      },
+      "wix": {
+        "language": "zh-CN",
+        "fragmentPaths": [
+          "./windows/fragments/registry.wxs"
+        ],
+        "componentRefs": [
+          "AlgorithmVisualizerRegistryEntries"
+        ]
+      },
+      "nsis": {
+        "languages": ["English", "SimpChinese"],
+        "displayLanguageSelector": true,
+        "installerHooks": "./windows/hooks.nsh",
+        "installMode": "both"
+      }
+    }
   },
   "plugins": {
     "shell": {

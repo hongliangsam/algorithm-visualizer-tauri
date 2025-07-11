@@ -1,0 +1,15 @@
+<WixLocalization
+  Culture="zh-CN"
+  xmlns="http://schemas.microsoft.com/wix/2006/localization"
+>
+  <String Id="LaunchApp">启动 算法可视化器</String>
+  <String Id="DowngradeErrorMessage">
+    已安装更新版本的算法可视化器。
+  </String>
+  <String Id="PathEnvVarFeature">
+    将算法可视化器可执行文件的安装位置添加到PATH系统环境变量。这允许从任何位置调用算法可视化器可执行文件。
+  </String>
+  <String Id="InstallAppFeature">
+    安装算法可视化器。
+  </String>
+</WixLocalization>

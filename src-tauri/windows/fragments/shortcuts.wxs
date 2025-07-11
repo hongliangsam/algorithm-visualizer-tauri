@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <!-- 定义桌面目录 -->
+    <DirectoryRef Id="DesktopFolder">
+      <!-- 桌面快捷方式组件 -->
+      <Component Id="DesktopShortcut" Guid="*">
+        <Shortcut
+          Id="DesktopShortcutId"
+          Name="算法可视化器"
+          Description="启动算法可视化器应用程序"
+          Target="[INSTALLDIR][ProductName].exe"
+          WorkingDirectory="INSTALLDIR"
+          Icon="app_icon.ico"
+        />
+        <!-- 必须有一个键值，以确保组件能够正确管理 -->
+        <RegistryValue
+          Root="HKCU"
+          Key="Software\algorithm\visualizer"
+          Name="DesktopShortcut"
+          Type="integer"
+          Value="1"
+          KeyPath="yes"
+        />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>
