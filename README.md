@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Framework-Vue%203-brightgreen">
   <img src="https://img.shields.io/badge/Build-Tauri-blue">
   <img src="https://img.shields.io/badge/Platform-Win%2FmacOS%2FLinux-purple">
-  <img src="https://img.shields.io/badge/Language-JavaScript-yellow">
+  <img src="https://img.shields.io/badge/Language-TypeScript-yellow">
   <img src="https://img.shields.io/badge/Language-Rust-black">
   <img src="https://img.shields.io/badge/Algorithms-10+%20categories-orange">
   <img src="https://img.shields.io/badge/License-MIT-green.svg">
