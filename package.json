@@ -10,7 +10,8 @@
     "tauri": "tauri",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build",
-    "tauri:apk": "tauri android build --apk",
+    "tauri:apk-aarch64-armv7": "tauri android build --apk --target aarch64 --target armv7",
+    "tauri:apk-universe": "tauri android build --apk",
     "tauri:info": "tauri info"
   },
   "dependencies": {
