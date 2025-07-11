@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 .cursor
 .vite
+src-tauri/gen/android/keystore.properties
