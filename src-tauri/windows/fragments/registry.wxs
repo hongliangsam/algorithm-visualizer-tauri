@@ -6,7 +6,6 @@
       <!-- 组织安装的注册表项 -->
       <!-- 注意这里我们提供的唯一ID -->
       <Component Id="AlgorithmVisualizerRegistryEntries" Guid="*">
-        <!-- 注册表项将位于 HKEY_CURRENT_USER\Software\algorithm\visualizer -->
         <!-- Tauri 使用标识符的第二部分作为"公司"名称
             (例如 `algorithm` in `com.algorithm.visualizer`)  -->
         <RegistryKey
@@ -31,8 +30,34 @@
             Name="LastRunDate"
             Value="[DATE]"
           />
+          <RegistryValue
+            Type="integer"
+            Name="KeepConfig"
+            Value="1"
+          />
         </RegistryKey>
       </Component>
     </DirectoryRef>
+
+    <!-- 添加桌面快捷方式 -->
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopShortcut" Guid="*">
+        <Shortcut Id="ApplicationDesktopShortcut"
+                 Name="算法可视化器"
+                 Description="启动算法可视化器应用程序"
+                 Target="[INSTALLDIR][ProductName].exe"
+                 WorkingDirectory="INSTALLDIR" />
+        <RegistryValue Root="HKCU" Key="Software\algorithm\visualizer"
+                      Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- 配置保留选项 -->
+    <Property Id="KEEPCONFIGONREMOVE" Value="1" />
+
+    <!-- 将应用程序快捷方式添加到组件组中 -->
+    <ComponentGroup Id="AlgorithmVisualizerShortcuts">
+      <ComponentRef Id="DesktopShortcut" />
+    </ComponentGroup>
   </Fragment>
 </Wix>

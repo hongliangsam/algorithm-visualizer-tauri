@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <!-- 定义一个属性，用于控制是否创建桌面快捷方式 -->
+    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" />
+
+    <!-- 定义桌面目录 -->
+    <DirectoryRef Id="DesktopFolder">
+      <!-- 桌面快捷方式组件 -->
+      <Component Id="DesktopShortcut" Guid="*">
+        <!-- 只有当INSTALLDESKTOPSHORTCUT=1时才安装该组件 -->
+        <Condition>INSTALLDESKTOPSHORTCUT</Condition>
+        <Shortcut Id="ApplicationDesktopShortcut"
+                 Name="算法可视化器"
+                 Description="启动算法可视化器应用程序"
+                 Target="[INSTALLDIR][ProductName].exe"
+                 WorkingDirectory="INSTALLDIR" />
+        <RegistryValue Root="HKCU" Key="Software\algorithm\visualizer"
+                      Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- 将属性设为命令行可修改 -->
+    <Property Id="ARPSYSTEMCOMPONENT" Value="1" />
+    <SetProperty Id="ARPNOMODIFY" Value="1" After="InstallValidate" Sequence="execute"/>
+  </Fragment>
+</Wix>

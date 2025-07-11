@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <UI Id="CustomUI">
+      <!-- 引用WiX标准对话框库 -->
+      <UIRef Id="WixUI_InstallDir" />
+
+      <!-- 修改对话框流程，添加自定义对话框 -->
+      <DialogRef Id="CustomizeDlg" />
+
+      <!-- 设置安装目录属性 -->
+      <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
+      <!-- 设置许可协议文件位置 -->
+      <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="感谢您安装算法可视化器。" />
+    </UI>
+  </Fragment>
+</Wix>

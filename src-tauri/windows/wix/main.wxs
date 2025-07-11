@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!-- 在这里定义主要UI -->
+  <Fragment>
+    <UI>
+      <!-- 扩展标准UI，添加桌面快捷方式选项 -->
+      <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+      <UIRef Id="WixUI_InstallDir" />
+
+      <!-- 卸载时显示自定义对话框 -->
+      <Publish Dialog="MaintenanceWelcomeDlg" Control="RemoveButton"
+               Event="SpawnDialog" Value="UninstallConfigDlg">1</Publish>
+    </UI>
+  </Fragment>
+</Wix>

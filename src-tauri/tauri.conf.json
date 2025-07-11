@@ -56,13 +56,7 @@
         "type": "embedBootstrapper"
       },
       "wix": {
-        "language": "zh-CN",
-        "fragmentPaths": [
-          "./windows/fragments/registry.wxs"
-        ],
-        "componentRefs": [
-          "AlgorithmVisualizerRegistryEntries"
-        ]
+        "language": "zh-CN"
       },
       "nsis": {
         "languages": ["English", "SimpChinese"],

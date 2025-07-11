@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <!-- 定义一个属性，用于控制卸载时是否保留配置 -->
+    <Property Id="KEEPCONFIGONREMOVE" Value="1" />
+
+    <!-- 添加卸载自定义操作 -->
+    <CustomAction Id="RemoveUserConfigOnUninstall"
+                  Directory="TARGETDIR"
+                  ExeCommand="cmd.exe /c if exist &quot;%APPDATA%\algorithm-visualizer&quot; rmdir /s /q &quot;%APPDATA%\algorithm-visualizer&quot;"
+                  Execute="immediate"
+                  Return="ignore" />
+
+    <CustomAction Id="RemoveRegistryEntriesOnUninstall"
+                  Directory="TARGETDIR"
+                  ExeCommand="reg delete HKCU\Software\algorithm\visualizer /f"
+                  Execute="immediate"
+                  Return="ignore" />
+
+    <!-- 卸载对话框 -->
+    <UI>
+      <Dialog Id="UninstallConfigDlg" Width="370" Height="270" Title="卸载选项" NoMinimize="yes">
+        <Control Id="Text" Type="Text" X="25" Y="70" Width="320" Height="40"
+                 Text="您是否想要保留配置文件？点击"是"保留，点击"否"删除。" />
+
+        <Control Id="Yes" Type="PushButton" X="100" Y="160" Width="56" Height="17"
+                 Default="yes" Text="是">
+          <Publish Property="KEEPCONFIGONREMOVE" Value="1">1</Publish>
+          <Publish Event="EndDialog" Value="Return">1</Publish>
+        </Control>
+
+        <Control Id="No" Type="PushButton" X="214" Y="160" Width="56" Height="17"
+                 Text="否">
+          <Publish Property="KEEPCONFIGONREMOVE" Value="0">1</Publish>
+          <Publish Event="EndDialog" Value="Return">1</Publish>
+        </Control>
+      </Dialog>
+    </UI>
+
+    <!-- 安装执行顺序 -->
+    <InstallExecuteSequence>
+      <!-- 只有在卸载且未勾选保留配置时才执行删除 -->
+      <Custom Action="RemoveUserConfigOnUninstall" Before="RemoveFiles">
+        (REMOVE="ALL") AND (NOT KEEPCONFIGONREMOVE)
+      </Custom>
+      <Custom Action="RemoveRegistryEntriesOnUninstall" After="RemoveUserConfigOnUninstall">
+        (REMOVE="ALL") AND (NOT KEEPCONFIGONREMOVE)
+      </Custom>
+    </InstallExecuteSequence>
+  </Fragment>
+</Wix>

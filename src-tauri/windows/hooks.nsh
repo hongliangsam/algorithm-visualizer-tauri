@@ -9,26 +9,15 @@
   DetailPrint "正在检查系统环境..."
 
   ; 在注册表中记录安装时间
-  WriteRegStr HKCU "Software\algorithm\visualizer" "InstallDate" "$TIMESTAMP"
-  DetailPrint "安装完成！感谢您选择算法可视化器！"
+  WriteRegStr HKCU "Software\algorithm\visualizer" "InstallDate" "${__DATE__}"
+  DetailPrint "已记录安装信息"
 !macroend
 
 !macro NSIS_HOOK_PREUNINSTALL
-  ; 卸载前确认
-  MessageBox MB_YESNO "您确定要卸载算法可视化器吗？" IDYES confirm_uninstall IDNO cancel_uninstall
-  confirm_uninstall:
-    DetailPrint "准备卸载应用程序..."
-    Goto continue_uninstall
-  cancel_uninstall:
-    Abort "卸载已取消"
-  continue_uninstall:
-!macroend
+  ; 在此执行卸载前的清理操作
+  DetailPrint "正在准备卸载..."
 
-!macro NSIS_HOOK_POSTUNINSTALL
-  ; 卸载后清理
-  RMDir /r "$APPDATA\algorithm-visualizer"
-  DetailPrint "已清理用户数据"
-
-  uninstall_done:
-    MessageBox MB_OK "卸载完成。感谢您使用算法可视化器！"
+  ; 删除桌面快捷方式
+  Delete "$DESKTOP\算法可视化器.lnk"
+  DetailPrint "已删除桌面快捷方式"
 !macroend

@@ -29,3 +29,16 @@ tokio = { version = "1.0", features = ["full"] }
 [features]
 default = ["custom-protocol"]
 custom-protocol = ["tauri/custom-protocol"]
+
+# WiX 配置
+[package.metadata.wix]
+# 创建桌面快捷方式
+create-desktop-shortcut = true
+# 安装路径
+install-scope = "perUser"
+# 程序菜单文件夹
+program-menu-folder = "算法可视化器"
+# 产品图标
+product-icon = "../icons/icon.ico"
+# 卸载显示名称
+uninstall-display-name = "算法可视化器"
