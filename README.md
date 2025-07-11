@@ -5,7 +5,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Framework-Vue%203-brightgreen">
   <img src="https://img.shields.io/badge/Build-Tauri-blue">
-  <img src="https://img.shields.io/badge/Platform-Win%2FmacOS%2FLinux-purple">
+  <img src="https://img.shields.io/badge/Platform-Win%2FmacOS%2FLinux%2FAndroid-purple">
   <img src="https://img.shields.io/badge/Language-TypeScript-yellow">
   <img src="https://img.shields.io/badge/Language-Rust-black">
   <img src="https://img.shields.io/badge/Algorithms-10+%20categories-orange">
@@ -14,7 +14,7 @@
 
 # 算法可视化器
 
-<p align="center">一个跨平台的算法可视化桌面应用，用于展示和解释各种经典算法实现和运行过程。本项目基于Vue 3和Tauri构建，支持Windows、macOS和Linux系统，帮助用户直观理解各类算法的工作原理和执行过程。</p>
+<p align="center">一个跨平台的算法可视化桌面应用，用于展示和解释各种经典算法实现和运行过程。本项目基于Vue 3和Tauri构建，支持Windows、macOS、Linux和Android系统，帮助用户直观理解各类算法的工作原理和执行过程。</p>
 
 > [!NOTE]
 >
@@ -25,7 +25,8 @@
 - ✨ **交互式算法可视化界面**：直观展示算法运行过程
 - 🔍 **代码和可视化同步展示**：同时查看代码实现与运行效果
 - 📚 **支持多种经典算法**：覆盖10+种常见算法类别
-- 💻 **跨平台支持**：可在Windows、macOS和Linux系统上运行
+- 💻 **跨平台支持**：可在Windows、macOS、Linux和Android系统上运行
+- 📱 **移动端适配**：支持Android平台，可安装已签名的APK
 - 🚀 **离线使用**：安装后无需网络连接即可使用全部功能
 - 📱 **响应式设计**：适应不同设备屏幕大小
 - 🎨 **自定义标题栏**：美观的无边框窗口设计，支持明暗主题自动切换
@@ -52,6 +53,7 @@
 - **Windows**: 下载 `.exe` 安装包或便携版
 - **macOS**: 下载 `.dmg` 安装包或通过 Homebrew 安装
 - **Linux**: 下载 `.AppImage` 文件、`.deb` 包或 `.rpm` 包
+- **Android**: 下载已签名的 `.apk` 安装包，允许来自未知来源的应用安装
 
 > [!TIP]
 > 所有安装包均可在本项目的 [Releases](https://github.com/your-username/algorithm-visualizer-tauri/releases) 页面找到。
