@@ -107,7 +107,7 @@ pnpm tauri build
 ```
 
 > [!TIP]
-> 开发前需确保已安装Rust和Tauri的相关依赖，详情请参考[Tauri官方文档](https://tauri.app/v1/guides/getting-started/prerequisites)。
+> 开发前需确保已安装Rust和Tauri的相关依赖，详情请参考[Tauri官方文档](https://tauri.app/zh-cn/start/prerequisites/)。
 
 ## 项目结构
 
