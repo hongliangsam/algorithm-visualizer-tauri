@@ -20,11 +20,23 @@ export async function setAppIcon() {
  */
 export async function refreshAllIcons() {
   try {
+    // 安全检查 - 确保获取到有效的窗口对象
+    const currentWindow = getCurrentWindow();
+    if (!currentWindow || typeof currentWindow.setIcon !== 'function') {
+      console.warn('窗口对象不可用或不支持setIcon方法，跳过图标刷新');
+      return;
+    }
+
     // 先使用PNG图标
-    await getCurrentWindow().setIcon('icons/icon.png');
+    await currentWindow.setIcon('icons/icon.png');
+
     // 然后使用ICO图标（Windows更常用）
     setTimeout(async () => {
-      await getCurrentWindow().setIcon('icons/icon.ico');
+      try {
+        await currentWindow.setIcon('icons/icon.ico');
+      } catch (innerError) {
+        console.error('刷新ICO图标失败:', innerError);
+      }
     }, 100);
 
     console.log('所有图标刷新成功');
